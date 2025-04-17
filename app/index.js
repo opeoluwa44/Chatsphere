@@ -3,6 +3,7 @@ import React from 'react'
 import Login from '@/screens/Login'
 import Register from '@/screens/Register'
 import Home from '@/screens/Home'
+import Chat from '@/screens/Chat'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
@@ -22,6 +23,23 @@ const App = () => {
       <Stack.Screen 
         name='Home' 
         component={Home}
+        options={{
+          headerLeft: null, 
+          title:'Active Users',
+          headerTitleAlign:'center',
+          headerTitleStyle:{fontWeight:'900'}
+        }}
+      />
+       <Stack.Screen 
+        name='Chat' 
+        component={Chat}
+        options={({route})=>(
+          {
+            title: route.params.name,
+            headerTitleAlign:'center',
+            headerTitleStyle:{fontWeight:'900'},
+          }
+        )}
       />
     </Stack.Navigator>
   )
